@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+html {
+    font-size: 24px;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+div span {
+    font-size: 25px;
+}
+
+.invisible {    
+    opacity:0; 
+} 
+
+.visible {
+    opacity: 1; /*Элемент полностью прозрачный (невидимый)*/
+    transition: 2s; /*Скорость перехода состояния элемента*/    
+    /* opacity:1;
+    transition: 1s; */
+}

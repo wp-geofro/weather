@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather panel</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="current"></div>
+    <div class="panel">
+        <div class="city">
+          <h2 id="name" class="invisible">Название города</h2>
+        </div>
+        <div class="board">
+          <span><span id="temperature"></span><sup><sup>o</sup>C</sup></span>
+          <img id="icon" src="">
+        </div>
+        <div class="sheet">
+          <div>
+            <img src="./img/humidity.png" alt="Влажность">
+            <span id="humidity">Влажность воздуха</span>
+          </div>
+          <div>
+            <img src="./img/wind.png" alt="Скорость">
+            <span id="windspeed">Скорость ветра</span>
+          </div>
+          <div>
+            <img src="./img/pressure.png" alt="Давление">
+            <span id="pressure">Атмосферное давление</span>
+          </div>
+        </div>
+    </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="weather.js"></script>
+  <script>
+      Weather.setApiKey("b87d2eed4b09361206e98a094754b8ea");
+      var something = ["London"];
+      // , "Paris", "Berlin"
+      $('.panel').on('click', function() {
+        something.forEach(function(element, i){
+        setTimeout(function(){
+          $("#name").text(element);
+          $('#name').removeClass('invisible');
+          $('#name').addClass('visible');
+          Weather.getCurrent( element, function( current ) {
+            $("#icon").attr("src", "./img/" + current.conditions() + ".png");
+            t = Math.round(Weather.kelvinToCelsius(current.temperature()));
+            if (t > 0) { t = "+ " + t }; 
+            $("#temperature").text(t);
+            $("#windspeed").text(Math.round(current.windspeed()) + " м/с");
+            $("#humidity").text(Math.round(current.humidity()) + "%"); 
+            $("#pressure").text(Math.round(Weather.hPaTommHg(current.pressure())) + " мм рт. ст.");    
+          });
+        }, 5000 * ++i)
+        });
+      });
+  </script>
+</body>
+</html> 
