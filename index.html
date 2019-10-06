@@ -16,8 +16,8 @@
           <h2 id="name" class="invisible">Название города</h2>
         </div>
         <div class="board">
-          <span><span id="temperature"></span><sup><sup>o</sup>C</sup></span>
-          <img id="icon" src="">
+              <span class="dial"><span id="temperature">0</span><sup><sup>o</sup>C</sup></span>
+              <span class="dial"></span><img id="icon" src="" class="dial"></span>
         </div>
         <div class="sheet">
           <div>
@@ -43,18 +43,20 @@
       $('.panel').on('click', function() {
         something.forEach(function(element, i){
         setTimeout(function(){
+        // window.setTimeout("",3000*i);
           $("#name").text(element);
           $('#name').removeClass('invisible');
           $('#name').addClass('visible');
           Weather.getCurrent( element, function( current ) {
-            $("#icon").attr("src", "./img/" + current.conditions() + ".png");
+            $("#icon").attr("src", "./img/" + current.conditions() + "d.png");
             t = Math.round(Weather.kelvinToCelsius(current.temperature()));
             if (t > 0) { t = "+ " + t }; 
             $("#temperature").text(t);
             $("#windspeed").text(Math.round(current.windspeed()) + " м/с");
             $("#humidity").text(Math.round(current.humidity()) + "%"); 
             $("#pressure").text(Math.round(Weather.hPaTommHg(current.pressure())) + " мм рт. ст.");    
-          });
+          });          
+          $('#name').addClass('invisible');
         }, 5000 * ++i)
         });
       });

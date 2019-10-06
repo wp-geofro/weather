@@ -9,6 +9,10 @@ var Weather = {Utils: {}};
 
 Weather.VERSION = "0.0.3";
 
+Weather.sleep = function (ms, callback){
+  setTimeout(function(){callback();}, ms);
+}
+
 var jsonp = Weather.Utils.jsonp = function (uri, callback){
   return new Promise(function(resolve, reject){
     var id = '_' + Math.round(10000 * Math.random());
@@ -208,7 +212,8 @@ Weather.Current.prototype.iconImg = function () {
 };
 
 Weather.Current.prototype.conditions = function () {
-  return this.data.list[0].weather[0].icon; //description;
+  str = this.data.list[0].weather[0].icon;  
+  return str.substring(0, str.length - 1); //description;
 };
 
 if (isModule) { module.exports = Weather; }

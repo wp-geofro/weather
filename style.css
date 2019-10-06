@@ -5,8 +5,24 @@ html {
     font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
+.city {
+    width: 250px;
+    border-bottom: 2px solid black;
+    margin-bottom: 30px;
+}
+
 div span {
     font-size: 25px;
+}
+
+#temperature {
+    font-size: 48px;
+}
+
+.dial {      
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
 }
 
 .invisible {    
