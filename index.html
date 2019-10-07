@@ -38,12 +38,10 @@
   <script src="weather.js"></script>
   <script>
       Weather.setApiKey("b87d2eed4b09361206e98a094754b8ea");
-      var something = ["London"];
-      // , "Paris", "Berlin"
+      var something = ["London", "Paris", "Berlin"];
       $('.panel').on('click', function() {
         something.forEach(function(element, i){
         setTimeout(function(){
-        // window.setTimeout("",3000*i);
           $("#name").text(element);
           $('#name').removeClass('invisible');
           $('#name').addClass('visible');
