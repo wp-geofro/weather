@@ -6,6 +6,8 @@ html {
 }
 
 .city {
+    position: relative;
+    top: 20px;
     width: 250px;
     border-bottom: 2px solid black;
     margin-bottom: 30px;
@@ -16,7 +18,7 @@ div span {
 }
 
 #temperature {
-    font-size: 48px;
+    font-size: 52px;
 }
 
 .dial {      
@@ -25,13 +27,26 @@ div span {
     line-height: normal;
 }
 
-.invisible {    
-    opacity:0; 
+.hide {    
+    position: relative;
+    top: 5px;
+    opacity: 0;
+    transition: 1s linear;
 } 
 
-.visible {
-    opacity: 1; /*Элемент полностью прозрачный (невидимый)*/
-    transition: 2s; /*Скорость перехода состояния элемента*/    
-    /* opacity:1;
-    transition: 1s; */
+.show {
+    top: 0;
+    opacity: 1;
+}
+
+.reduce {
+    position: relative;
+    top: 5px;
+    opacity: 0;
+    transition: 1s linear;
+}
+
+.growth {
+    opacity: 1;    
+    transform: scale(1.1);
 }
